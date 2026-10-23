@@ -22,3 +22,6 @@ TARGET_2ND_ARCH_VARIANT := x86_64
 include device/generic/goldfish/board/BoardConfigCommon.mk
 
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 576716800
+
+# Build-only Go GC soft limit; no OS policy or dependency-check change.
+BUILD_BROKEN_NINJA_USES_ENV_VARS += GOMEMLIMIT

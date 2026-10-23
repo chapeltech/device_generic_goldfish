@@ -36,3 +36,7 @@ PRODUCT_BRAND := Android
 PRODUCT_NAME := sdk_phone64_x86_64
 PRODUCT_DEVICE := emu64x
 PRODUCT_MODEL := Android SDK built for x86_64
+
+# Wonad external-desktop emulator; phone desktop mode stays disabled by its overlay.
+PRODUCT_PACKAGES += \
+    android.software.freeform_window_management.prebuilt.xml

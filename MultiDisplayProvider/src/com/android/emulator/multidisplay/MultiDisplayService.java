@@ -148,15 +148,17 @@ public final class MultiDisplayService extends Service {
             Log.e(TAG, "Failed to loadLibrary: " + e);
         }
 
-        mListener = new ListenerThread();
-        mListener.start();
-
         mDisplayManager = getSystemService(DisplayManager.class);
         mMultiDisplay = new MultiDisplay[MAX_DISPLAYS + 1];
         for (int i = 0; i < MAX_DISPLAYS + 1; i++) {
             Log.d(TAG, "Creating display " + i);
             mMultiDisplay[i] = new MultiDisplay();
         }
+
+        // Thread.start publishes the fully initialized display state. The
+        // host may replay ADD immediately, particularly after a guest reboot.
+        mListener = new ListenerThread();
+        mListener.start();
     }
 
     @Override
